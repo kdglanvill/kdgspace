@@ -1,10 +1,9 @@
-workflow Provision-VPN
-{
+funtion New-VPN {       
     param
     (
         # Name of the Automation Credential for the Tenant
         [parameter(Mandatory=$true)] 
-        [string] $automationcredentialName,
+        [SecureString] $automationcredentialName,
 
         # Name of the target Resource Group
         [parameter(Mandatory=$true)] 
@@ -60,7 +59,6 @@ workflow Provision-VPN
 
     )
 
-inlinescript
     {
 
     #Connect to Azure Tenant
@@ -172,7 +170,7 @@ inlinescript
                     -Name $Using:gatewayName `
                     -ResourceGroupName $Using:resourceGroup
 
-            }While($gateway -eq $null)
+            }While($null -eq $gateway)
 
     Write-Output "Received created gateway - $($gateway.Name) - from resource group - $($gateway.ResourceGroupName) -"
 
