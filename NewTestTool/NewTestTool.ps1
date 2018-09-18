@@ -8,7 +8,7 @@ foreach ($computer in $Computername) {
     $properties = @{ClassName = $Computer
                     SPVersion = $os.servicepackmajorversion
                     OSVersion = $os.Version
-                    Model = $cs,Model
+                    Model = $cs.Model
                     Mfgr = $cs.Manufacturer}
     New-Object -TypeName PSObject -Property $properties
 }
