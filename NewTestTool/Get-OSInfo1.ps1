@@ -3,7 +3,7 @@ param(
 )
 
 foreach ($computer in $Computername) {
-    $os = Get=CimInstance -Computername $Computer -ClassName win32_operatingsystem
+    $os = Get-CimInstance -Computername $Computer -ClassName win32_operatingsystem
     $cs = Get-CimInstance -Computername $Computer -ClassName win32_computersystem
     $properties = @{ComputerName = $Computer
                     SPVersion = $os.servicepackmajorversion
